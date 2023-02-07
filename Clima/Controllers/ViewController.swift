@@ -7,10 +7,37 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    
+    //MARK: - let/var
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: UIScreen.main.bounds)
+        imageView.image = UIImage(named: "background")
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    
+    //MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViews()
+        setConstraints()
     }
+    
+    //MARK: - flow funcs
+    private func setupViews() {
+        view.addSubview(backgroundImageView)
+    }
+    
+    //MARK: - public
 }
 
+//MARK: - extension
+extension ViewController {
+    private func setConstraints() {
+    }
+}
