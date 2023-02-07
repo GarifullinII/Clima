@@ -55,10 +55,10 @@
 			isa = PBXGroup;
 			children = (
 				6E2303382992E1FD007C66C8 /* Application */,
-				6E16BEB82992DB74005BEB51 /* ViewController.swift */,
-				6E16BEBD2992DB79005BEB51 /* Assets.xcassets */,
-				6E16BEBF2992DB79005BEB51 /* LaunchScreen.storyboard */,
-				6E16BEC22992DB79005BEB51 /* Info.plist */,
+				6E2303392992E719007C66C8 /* Models */,
+				6E23033A2992E720007C66C8 /* Views */,
+				6E23033B2992E726007C66C8 /* Controllers */,
+				6E23033C2992E73E007C66C8 /* Resources */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -70,6 +70,38 @@
 				6E16BEB62992DB74005BEB51 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		6E2303392992E719007C66C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6E23033A2992E720007C66C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6E23033B2992E726007C66C8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E16BEB82992DB74005BEB51 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6E23033C2992E73E007C66C8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E16BEBD2992DB79005BEB51 /* Assets.xcassets */,
+				6E16BEBF2992DB79005BEB51 /* LaunchScreen.storyboard */,
+				6E16BEC22992DB79005BEB51 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +317,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38NM7VX6QJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Clima/Info.plist;
+				INFOPLIST_FILE = Clima/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -317,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38NM7VX6QJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Clima/Info.plist;
+				INFOPLIST_FILE = Clima/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
