@@ -14,6 +14,7 @@
 		6E16BEC12992DB79005BEB51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E16BEBF2992DB79005BEB51 /* LaunchScreen.storyboard */; };
 		6E23033E2992F50A007C66C8 /* dark_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6E23033D2992F50A007C66C8 /* dark_background.pdf */; };
 		6E2303402992F514007C66C8 /* light_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6E23033F2992F513007C66C8 /* light_background.pdf */; };
+		6E3B9333299988C50032940B /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3B9332299988C50032940B /* UIStackView + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6E16BEC22992DB79005BEB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E23033D2992F50A007C66C8 /* dark_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dark_background.pdf; sourceTree = "<group>"; };
 		6E23033F2992F513007C66C8 /* light_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = light_background.pdf; sourceTree = "<group>"; };
+		6E3B9332299988C50032940B /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				6E2303392992E719007C66C8 /* Models */,
 				6E23033A2992E720007C66C8 /* Views */,
 				6E23033B2992E726007C66C8 /* Controllers */,
+				6E3B93302999889B0032940B /* Extensions */,
 				6E23033C2992E73E007C66C8 /* Resources */,
 			);
 			path = Clima;
@@ -108,6 +111,22 @@
 				6E23033F2992F513007C66C8 /* light_background.pdf */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6E3B93302999889B0032940B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E3B9331299988B30032940B /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6E3B9331299988B30032940B /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				6E3B9332299988C50032940B /* UIStackView + Extensions.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +204,7 @@
 				6E16BEB92992DB74005BEB51 /* ViewController.swift in Sources */,
 				6E16BEB52992DB74005BEB51 /* AppDelegate.swift in Sources */,
 				6E16BEB72992DB74005BEB51 /* SceneDelegate.swift in Sources */,
+				6E3B9333299988C50032940B /* UIStackView + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
