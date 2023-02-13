@@ -34,16 +34,14 @@ final class ViewController: UIViewController {
         textField.placeholder = "Search"
         textField.setContentHuggingPriority(UILayoutPriority(247), for: .horizontal)
         textField.backgroundColor = .clear
-        textField.font = UIFont.systemFont(ofSize: 14)
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.textAlignment = .right
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 4
         textField.textColor = .black
         textField.clearButtonMode = .always
         textField.returnKeyType = .done
-        
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
