@@ -23,7 +23,7 @@ final class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         button.tintColor = .black
-        button.addTarget(ViewController.self, action: #selector(messagerButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(messagerButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -51,13 +51,59 @@ final class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.tintColor = .black
-        button.addTarget(ViewController.self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }()
     
     var stackView = UIStackView()
+    
+    private let conditionImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "sun.max")
+        imageView.tintColor = .black
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private let temperatureValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = "21"
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 80)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let unitTemperatureLabel: UILabel = {
+        let label = UILabel()
+        label.text = "°C"
+        label.textColor = .black
+        label.font = label.font.withSize(80)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    var temperatureStackView = UIStackView()
+    
+    private let cityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "London"
+        label.textColor = .black
+        label.font = label.font.withSize(30)
+        
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
     //MARK: - life cycle funcs
     override func viewDidLoad() {
@@ -94,8 +140,20 @@ extension ViewController {
             axis: .horizontal,
             spacing: 5
         )
-        
         view.addSubview(stackView)
+
+        view.addSubview(conditionImageView)
+        
+        temperatureStackView = UIStackView(
+            arrangedSubviews: [
+                temperatureValueLabel,
+                unitTemperatureLabel
+            ],
+            axis: .horizontal,
+            spacing: 2)
+        view.addSubview(temperatureStackView)
+        
+        view.addSubview(cityLabel)
     }
 }
 
@@ -106,6 +164,25 @@ extension ViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             stackView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            conditionImageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            conditionImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            conditionImageView.widthAnchor.constraint(equalToConstant: 120),
+            conditionImageView.heightAnchor.constraint(equalToConstant: 120)
+        ])
+        
+        NSLayoutConstraint.activate([
+            temperatureStackView.topAnchor.constraint(equalTo: conditionImageView.bottomAnchor, constant: 10),
+            temperatureStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            temperatureStackView.heightAnchor.constraint(equalToConstant: 120)
+        ])
+        
+        NSLayoutConstraint.activate([
+            cityLabel.topAnchor.constraint(equalTo: temperatureStackView.bottomAnchor, constant: 10),
+            cityLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            cityLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
