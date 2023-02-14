@@ -13,7 +13,7 @@ final class ViewController: UIViewController {
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = UIImage(named: "background")
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -62,7 +62,7 @@ final class ViewController: UIViewController {
     private let conditionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "sun.max")
-        imageView.tintColor = .black
+        imageView.tintColor = UIColor(named: "weatherColor")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -72,7 +72,7 @@ final class ViewController: UIViewController {
     private let temperatureValueLabel: UILabel = {
         let label = UILabel()
         label.text = "21"
-        label.textColor = .black
+        label.textColor = UIColor(named: "weatherColor")
         label.font = UIFont.boldSystemFont(ofSize: 80)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +83,7 @@ final class ViewController: UIViewController {
     private let unitTemperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "°C"
-        label.textColor = .black
+        label.textColor = UIColor(named: "weatherColor")
         label.font = label.font.withSize(80)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +96,7 @@ final class ViewController: UIViewController {
     private let cityLabel: UILabel = {
         let label = UILabel()
         label.text = "London"
-        label.textColor = .black
+        label.textColor = UIColor(named: "weatherColor")
         label.font = label.font.withSize(30)
         
         label.textAlignment = .center
