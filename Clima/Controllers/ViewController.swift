@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
     private let messagerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = UIColor(named: "weatherColor")
         button.addTarget(self, action: #selector(messagerButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,11 +37,11 @@ final class ViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textAlignment = .right
         textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = UIColor(named: "weatherColor")?.cgColor
         textField.layer.cornerRadius = 4
-        textField.textColor = .black
+        textField.textColor = UIColor(named: "weatherColor")
         textField.clearButtonMode = .always
-        textField.returnKeyType = .done
+        textField.returnKeyType = .go
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -50,7 +50,7 @@ final class ViewController: UIViewController {
     private let searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = UIColor(named: "weatherColor")
         button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -111,6 +111,8 @@ final class ViewController: UIViewController {
         
         setupViews()
         setConstraints()
+        
+        searchTextField.delegate = self
     }
     
     //MARK: - flow funcs
@@ -119,7 +121,7 @@ final class ViewController: UIViewController {
     }
     
     @objc private func searchButtonTapped() {
-        print("messagerButtonTapped")
+        searchTextField.endEditing(true)
     }
     
     //MARK: - public
@@ -184,5 +186,27 @@ extension ViewController {
             cityLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             cityLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            textField.placeholder = "Type something"
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchTextField.text = ""
     }
 }
