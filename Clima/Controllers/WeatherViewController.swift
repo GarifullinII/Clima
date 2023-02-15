@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     
     //MARK: - let/var
     private let backgroundImageView: UIImageView = {
@@ -128,7 +128,7 @@ final class ViewController: UIViewController {
 }
 
 //MARK: - extension
-extension ViewController {
+extension WeatherViewController {
     private func setupViews() {
         view.addSubview(backgroundImageView)
         
@@ -159,7 +159,7 @@ extension ViewController {
     }
 }
 
-extension ViewController {
+extension WeatherViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -189,7 +189,7 @@ extension ViewController {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
