@@ -13,6 +13,7 @@
 		6E16BEBE2992DB79005BEB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E16BEBD2992DB79005BEB51 /* Assets.xcassets */; };
 		6E16BEC12992DB79005BEB51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E16BEBF2992DB79005BEB51 /* LaunchScreen.storyboard */; };
 		6E3B9333299988C50032940B /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3B9332299988C50032940B /* UIStackView + Extensions.swift */; };
+		6E3B9349299D19870032940B /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3B9348299D19870032940B /* WeatherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6E16BEC02992DB79005BEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E16BEC22992DB79005BEB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E3B9332299988C50032940B /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		6E3B9348299D19870032940B /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		6E2303392992E719007C66C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6E3B9348299D19870032940B /* WeatherManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				6E16BEB92992DB74005BEB51 /* WeatherViewController.swift in Sources */,
 				6E16BEB52992DB74005BEB51 /* AppDelegate.swift in Sources */,
+				6E3B9349299D19870032940B /* WeatherManager.swift in Sources */,
 				6E16BEB72992DB74005BEB51 /* SceneDelegate.swift in Sources */,
 				6E3B9333299988C50032940B /* UIStackView + Extensions.swift in Sources */,
 			);

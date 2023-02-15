@@ -10,6 +10,8 @@ import UIKit
 final class WeatherViewController: UIViewController {
     
     //MARK: - let/var
+    var weatherManager = WeatherManager()
+    
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = UIImage(named: "background")
@@ -207,6 +209,10 @@ extension WeatherViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
+        
         searchTextField.text = ""
     }
 }
