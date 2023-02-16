@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class WeatherViewController: UIViewController {
-    
+final class WeatherViewController: UIViewController, WeatherManagerDelegate {
     //MARK: - let/var
     var weatherManager = WeatherManager()
     
@@ -114,6 +113,7 @@ final class WeatherViewController: UIViewController {
         setupViews()
         setConstraints()
         
+        weatherManager.delegate = self
         searchTextField.delegate = self
     }
     
@@ -214,5 +214,13 @@ extension WeatherViewController: UITextFieldDelegate {
         }
         
         searchTextField.text = ""
+    }
+    
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        temperatureValueLabel.text = weather.temperatureString
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error.localizedDescription)
     }
 }
