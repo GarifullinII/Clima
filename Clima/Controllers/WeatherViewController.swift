@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-final class WeatherViewController: UIViewController, WeatherManagerDelegate {
+final class WeatherViewController: UIViewController {
+    
     //MARK: - let/var
+    
     var weatherManager = WeatherManager()
+    let locationManager = CLLocationManager()
     
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
@@ -20,11 +24,11 @@ final class WeatherViewController: UIViewController, WeatherManagerDelegate {
         return imageView
     }()
     
-    private let messagerButton: UIButton = {
+    private let locationButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         button.tintColor = UIColor(named: "weatherColor")
-        button.addTarget(self, action: #selector(messagerButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -107,8 +111,13 @@ final class WeatherViewController: UIViewController, WeatherManagerDelegate {
     }()
     
     //MARK: - life cycle funcs
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
         setupViews()
         setConstraints()
@@ -118,8 +127,9 @@ final class WeatherViewController: UIViewController, WeatherManagerDelegate {
     }
     
     //MARK: - flow funcs
-    @objc private func messagerButtonTapped() {
-        print("messagerButtonTapped")
+    
+    @objc private func locationButtonTapped() {
+        locationManager.requestLocation()
     }
     
     @objc private func searchButtonTapped() {
@@ -129,14 +139,15 @@ final class WeatherViewController: UIViewController, WeatherManagerDelegate {
     //MARK: - public
 }
 
-//MARK: - extension
+//MARK: - extensions
+
 extension WeatherViewController {
     private func setupViews() {
         view.addSubview(backgroundImageView)
         
         stackView = UIStackView(
             arrangedSubviews: [
-                messagerButton,
+                locationButton,
                 searchTextField,
                 searchButton
                 
@@ -215,12 +226,36 @@ extension WeatherViewController: UITextFieldDelegate {
         
         searchTextField.text = ""
     }
+}
+
+extension WeatherViewController: WeatherManagerDelegate {
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        temperatureValueLabel.text = weather.temperatureString
+        DispatchQueue.main.async {
+            self.temperatureValueLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: "\(weather.conditionName)")
+            self.cityLabel.text = weather.cityName
+            self.cityLabel.text = weather.cityName
+        }
     }
     
     func didFailWithError(error: Error) {
         print(error.localizedDescription)
+    }
+}
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherManager.fetchWeather(latitude: lat, logitude: lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
